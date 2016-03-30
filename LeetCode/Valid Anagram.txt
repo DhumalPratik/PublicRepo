@@ -1,0 +1,35 @@
+/*
+Given two strings s and t, write a function to determine if t is an anagram of s.
+
+For example,
+s = "anagram", t = "nagaram", return true.
+s = "rat", t = "car", return false.
+
+Note:
+You may assume the string contains only lowercase alphabets.
+*/
+
+public class Solution {
+    public bool IsAnagram(string s, string t) {
+        //var lst = t.ToList();
+        //foreach(char c in s){
+        //   if(!lst.Remove(c)) return false;
+        //}
+        //return lst.Count == 0;
+        var sA = s.ToCharArray();
+        var tA = t.ToCharArray();
+        int[] Counter = new int['z'+ 1];
+        if((sA.Length - tA.Length) != 0) return false;
+        int i;
+        for(i=0;i<sA.Length ; i++){
+            Counter[sA[i]]++;
+        }
+        for(i=0;i<tA.Length ; i++){
+            Counter[tA[i]]--;
+        }
+        foreach(var item in Counter){
+            if(item!=0) return false;
+        }
+        return true;
+    }
+}
