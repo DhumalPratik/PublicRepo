@@ -1,0 +1,56 @@
+/*
+Given a roman numeral, convert it to an integer.
+
+Input is guaranteed to be within the range from 1 to 3999.
+*/
+
+
+public class Solution {
+    public int RomanToInt(string s) {
+        Console.Write(s);
+        var cA = s.ToCharArray();
+        int i,val,retVal=0,n=cA.Length;
+        char lastChar=' ';
+        for(i=n-1;i>=0;i--){
+            val = LetterValue(cA[i]);
+            retVal+=val*(((lastChar=='V'&& val<5)||(lastChar=='X'&& val<10)||(lastChar=='L'&& val<50)||(lastChar=='C'&& val<100)
+                        ||(lastChar=='D'&& val<500)||(lastChar=='M'&& val<1000))?(-1):1);
+            lastChar = cA[i];
+        }
+        return retVal;
+    }
+    /*
+    private int getMultiplier(int val,char lastChar){
+        return ;
+    }
+    */
+    private int LetterValue(char c)
+    {
+        int retVal = 0;
+        switch(c){
+            case 'I':
+                retVal = 1;
+                break;
+            case 'V':
+                retVal = 5;
+                break;
+            case 'X':
+                retVal = 10;
+                break;
+            case 'L':
+                retVal = 50;
+                break;
+            case 'C':
+                retVal = 100;
+                break;
+            case 'D':
+                retVal = 500;
+                break;
+            case 'M':
+                retVal = 1000;
+                break;
+            
+        }
+        return retVal;
+    }
+}
