@@ -1,0 +1,19 @@
+/*
+Contains Duplicate
+Given an array of integers, find if the array contains any duplicates. 
+Your function should return true if any value appears at least twice in the array, 
+and it should return false if every element is distinct.
+*/
+
+public class Solution {
+    public bool ContainsDuplicate(int[] nums) {
+        var d = new Dictionary<int,int>();
+        int i;
+        for(i=0;i<nums.Length;i++){
+            if(d.ContainsKey(nums[i]))
+                return true;
+            d.Add(nums[i],1);
+        }
+        return false;
+    }
+}
